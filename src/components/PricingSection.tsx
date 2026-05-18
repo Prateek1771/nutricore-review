@@ -105,7 +105,7 @@ export default function PricingSection() {
                   <span className="px-2 py-0.5 rounded-full bg-nc-yellow text-nc-dark text-[10px] font-bold uppercase tracking-wide">Popular</span>
                 </div>
                 <div className="flex items-end gap-1 mb-1">
-                  <span className="font-serif text-4xl font-bold text-white">₹150</span>
+                  <span className="font-serif text-4xl font-bold text-white">₹350</span>
                   <span className="text-sm text-white/50 mb-1">/month</span>
                 </div>
                 <p className="text-xs text-white/40 mb-6">Full access, cancel anytime</p>

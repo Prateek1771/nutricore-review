@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Leaf } from '@phosphor-icons/react'
 import { NcButtonPrimary } from './ui/nc-button'
 
 const NAV_LINKS = [
@@ -29,7 +30,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
           <span className="w-7 h-7 rounded-lg bg-nc-dark flex items-center justify-center">
-            <span className="text-white text-xs font-bold font-serif">N</span>
+            <Leaf size={14} weight="fill" className="text-white" />
           </span>
           <span className="font-semibold text-nc-text text-sm tracking-tight">NutriCore</span>
         </a>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { NcEyebrow } from './ui/nc-badge'
 import { NcButtonPrimary, NcButtonSecondary } from './ui/nc-button'
+import { NeatGradientBg } from './NeatGradientBg'
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 28, filter: 'blur(5px)' },
@@ -33,16 +34,17 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center overflow-hidden bg-nc-bg">
-      {/* Warm radial glow */}
+    <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
+      {/* NeatGradient animated background */}
+      <NeatGradientBg />
+
+      {/* Bottom fade — blends gradient into page bg */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 55% 60% at 28% 50%, rgba(235,229,195,0.5) 0%, transparent 68%)',
-        }}
+        className="absolute bottom-0 inset-x-0 h-40 pointer-events-none z-[1]"
+        style={{ background: 'linear-gradient(to bottom, transparent, #F6F4EF)' }}
       />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[1fr_0.88fr] gap-10 md:gap-8 items-center py-20 pt-28">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[1fr_0.88fr] gap-10 md:gap-8 items-center py-16 pt-24">
         {/* LEFT — text */}
         <motion.div
           className="flex flex-col gap-6"
@@ -51,7 +53,7 @@ export default function HeroSection() {
           variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 0.22 } } }}
         >
           <motion.div variants={fadeUp}>
-            <NcEyebrow>India's AI Dietitian — Now Pitching</NcEyebrow>
+            <NcEyebrow className="bg-white/60 backdrop-blur-sm text-nc-text-secondary shadow-sm">India's AI Dietitian — Now Pitching</NcEyebrow>
           </motion.div>
 
           <motion.h1
@@ -60,7 +62,7 @@ export default function HeroSection() {
           >
             Your personal<br />
             dietitian,{' '}
-            <span className="text-nc-text-secondary">
+            <span style={{ color: '#4A4A4A' }}>
               building<br className="hidden md:block" /> a healthier you
             </span>
             {' '}— every day
@@ -95,7 +97,7 @@ export default function HeroSection() {
               {[...Array(4)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-7 h-7 rounded-full border-2 border-nc-bg"
+                  className="w-7 h-7 rounded-full border-2 border-white/60"
                   style={{ background: ['#F5E6A3','#C8EFD4','#FDDBB8','#D9D4F0'][i] }}
                 />
               ))}
@@ -191,7 +193,7 @@ export default function HeroSection() {
 
       {/* Scroll hint */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
